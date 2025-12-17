@@ -1,26 +1,68 @@
-# web_scraping
-## Overview
+# MG Information Board
 
-This project demonstrates techniques for extracting data from websites using Python. It covers common web scraping patterns, best practices, and tools.
+このプロジェクトは、明治学院大学 横浜キャンパス向けの情報表示ボードです。時刻、バス時刻表、天気予報をリアルタイムで表示します。
 
-## Features
+## 機能
 
-- HTTP requests and response handling
-- HTML parsing with BeautifulSoup
-- Data extraction and cleaning
-- Rate limiting and polite scraping
-- Error handling
+- **デジタル・アナログ時計表示** - 現在時刻をデジタル（HH:MM:SS）とアナログ両形式で表示
+- **バス時刻表** - 次発バスと以降の便を自動更新（南門発）
+- **天気予報** - 気象庁APIから3日間の天気予報と気温を取得
+- **現在気温表示** - アメダス観測地点（横浜）の実測値をリアルタイム表示
+- **ローディング画面** - システム起動時のプログレスバー付きスプラッシュ画面
+- **レスポンシブデザイン** - モバイルデバイスにも対応
 
-## Getting Started
+## ファイル構成
 
-```bash
-pip install requests beautifulsoup4
-```
+| ファイル | 説明 |
+|---------|------|
+| display_index_20251211.html | メインHTMLファイル |
+| display_design_20251211.css | スタイルシート（グラスモーフィズムデザイン） |
+| display_data_20251211.js | JavaScriptメイン処理 |
+| bus_schedule_20251211.js | バス時刻表データ |
 
-## Usage
+## 技術スタック
 
-See examples in the `scripts/` directory.
+- **HTML5** - セマンティックマークアップ
+- **CSS3** - グリッドレイアウト、ガラスモーフィズム、アニメーション
+- **JavaScript (ES6+)** - 非同期通信、DOM操作、時間計算
 
-## Notes
+## APIデータソース
 
-Always respect `robots.txt` and website terms of service.
+- 気象庁 天気予報API
+- 気象庁 アメダス観測データ
+
+## 使用方法
+
+1. display_index_20251211.html をWebブラウザで開く
+2. ローディング画面でシステム初期化を待つ
+3. 時刻、バス時刻表、天気情報が自動更新される
+
+## 更新頻度
+
+- **時刻表示** - 1秒ごと
+- **バス時刻表** - 1秒ごと
+- **天気予報** - 1時間ごと
+
+## バス時刻表の変更方法
+
+bus_schedule_20251211.js の `BUS_DATA` オブジェクトを編集
+
+## デザイン特徴
+
+- **グラスモーフィズム** - 半透明のカード、ブラー効果
+- **ダークテーマ** - 目に優しい紺色ベース
+- **アクセントカラー** - ゴールド（#ffd700）
+- **日本語フォント** - Noto Sans JP
+- **モノスペースフォント** - Roboto Mono（数字表示）
+
+## 気象データについて
+
+- **天気予報** - 気象庁 神奈川県（140000）
+- **現在気温** - アメダス横浜観測地点（46106）
+- **出典** - 気象庁HP
+
+## ライセンス
+
+このプロジェクトは明治学院大学 横浜キャンパス向けです。
+
+`Copyright © Tetra All rights reserved.`
